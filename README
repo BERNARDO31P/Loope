@@ -1,0 +1,31 @@
+##INSTALLATION##
+1. Damit Loopé korrekt funktionieren kann, sind folgende Pakete notwendig:
+ - libapache2-mod-php
+ - php-zip
+ - php-xml
+ - php-mbstring
+ - unzip
+ - screen
+ - composer
+ - convmv
+
+2. Nachdem alles installiert wurde, kann man den gesamten Inhalt der bereitgestellten ZIP-Datei ins Apache Webverzeichnis entpacken.
+
+(1.1 PHP Biblioteken, welche notwendig sind, kann man jetzt mit Composer installieren.)
+
+3. Der Crawler besitzt eine Konfigurationsdatei, diese befindet sich unter "assets/config/crawler.ini".
+3.1 Die Suche besitzt eine Konfigurationsdatei, diese befindet sich unter "assets/config/search.ini".
+
+4. Mit screen kann man den Crawler im Hintergrund laufen lassen.
+4.1 Möchte man screen mit cronjob ersetzen, muss hierbei darauf geachtet werden, dass der Crawler mit einem Argument starten muss.
+     Hier ein Beispiel: "php crawler.php cron" somit wird das Script nur einmal ausgeführt, anstatt permanent.
+
+(5. Falls die Dateinamen nicht korrekt kodiert werden: "convmv -f iso-8859-1 -t utf8 --replace --notest -r [VERZEICHNIS]")
+
+Schluss: Sobald der Crawler die Dateien indexiert hat, kann man den Server mit einem Browser aufrufen.
+Bei Fragen oder Unklarheiten, melden Sie sich bitte bei Ihrem Vorgesetzen.
+
+
+##BENUTZUNG##
+Loopé besitzt bereits einige Zeichen, welche die Suche vereinfachen. Wenn man ein Wort mit Anführungszeichen sucht, werden nur
+Ergebnisse angezeigt, welche das Wort enthalten. Mit einem Minus vor einem Wort bewirkt man das Gegenteil. (Wie Google)

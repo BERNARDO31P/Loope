@@ -1,0 +1,22 @@
+{
+  "name": "bernardo31p/loope",
+  "description": "This is a software to search and find files on your filesystem.",
+  "minimum-stability": "stable",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Bernardo de Oliveira",
+      "email": "bernardo@bernardo.fm"
+    }
+  ],
+  "require": {
+    "ext-zlib": "*",
+    "ext-zip": "*",
+    "ext-dom": "*",
+    "ext-libxml": "*",
+    "ext-mbstring": "*",
+    "ext-json": "*",
+    "ext-ctype": "*",
+    "ext-exif": "*"
+  }
+}

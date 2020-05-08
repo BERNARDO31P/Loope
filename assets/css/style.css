@@ -1,0 +1,123 @@
+/* latin */
+@font-face {
+    font-family: 'IndieFlower';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: local('Indie Flower'), local('IndieFlower'), url(https://fonts.gstatic.com/s/indieflower/v11/m8JVjfNVeKWVnh3QMuKkFcZVaUuH.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+*, ::after, ::before {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+}
+
+body {
+    line-height: 1.5;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    vertical-align: middle;
+    border-style: none;
+}
+
+p {
+    display: inline-block;
+    margin: 0;
+}
+
+button, input, optgroup, select, textarea {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+
+#footer {
+    display: inline-table;
+    text-align: right;
+    position: absolute;
+    bottom: 0;
+    height: 35px;
+    background-color: #fcfcfc;
+    padding: 5px;
+    -webkit-box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.2);
+}
+
+#logo {
+    text-decoration: none;
+    color: #000000;
+}
+
+#logo a {
+    text-decoration: none;
+    color: black;
+}
+
+#cleaner {
+    display: none;
+}
+
+#searchbar {
+    display: flex;
+    border-radius: 50px;
+    width: 720px;
+    border: 1px solid #e1e1e1;
+    transition: 0.1s;
+}
+
+#searchbar:hover {
+    -webkit-box-shadow: 0 0 10px -5px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0 0 10px -5px rgba(0, 0, 0, 0.75);
+    box-shadow: 0 0 10px -5px rgba(0, 0, 0, 0.75);
+}
+
+#searchbar:focus-within {
+    -webkit-box-shadow: 0 0 1px 1px rgba(0, 196, 255, 0.4);
+    -moz-box-shadow: 0 0 1px 1px rgba(0, 196, 255, 0.4);
+    box-shadow: 0 0 1px 1px rgba(0, 196, 255, 0.4);
+}
+
+.content {
+    width: 100%;
+}
+
+.fa-search, .fa-times {
+    color: rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+    float: left;
+    width: 50px;
+    transition: 0.1s;
+}
+
+.fa-search:hover, .fa-times:hover {
+    color: black;
+}
+
+::-webkit-calendar-picker-indicator {
+    display: none;
+}
+
+::-ms-clear {
+    display: none;
+}
+
+
+@media (max-width: 550px) {
+    #footer {
+        text-align: center;
+    }
+}
