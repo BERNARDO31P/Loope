@@ -157,7 +157,6 @@ function sendSearch(page = 1) {
                             })
 
                             object += "</div>";
-                            console.log(object);
                             $(object).prependTo("#main");
                         }
 
@@ -300,7 +299,12 @@ body.on("click", "#luckybutton", function (e) {
 
                 let data = jQuery.parseJSON(JSON.stringify(response));
                 if (!data['error']) {
-                    //download(data['info']['url'], data['info']['filename']);
+                    let link = document.createElement("a");
+                    link.download = data['info']['basename'];
+                    link.href = data['info']['url'];
+                    link.target = "_blank";
+                    link.click();
+                    link.remove();
                 } else {
                     alert(data['error']);
                 }

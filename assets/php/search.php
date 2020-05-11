@@ -212,13 +212,12 @@ if (isset($_POST['search']) && $_POST['search'] != "" && isset($_POST['page']) &
 
     echo json_encode($output);
 } elseif (isset($_POST['search']) && $_POST['search'] != "") {
-
     $data = json_decode(getData($indexdb), TRUE);
     $data = prepareData($data);
+
     if (count($data) > 0) {
-        $download = $data[0];
-        $output['info']['url'] = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == "on" ? "https" : "http") . "://" . $_SERVER['HTTP_HOST'] . "/assets/php/download.php?dir=" . $download['dirname'] . "&file=" . $download['basename'];
-        $output['info']['filename'] = $download['basename'];
+        $output['info'] = $data['files'][0];
+        $output['info']['url'] = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == "on" ? "https" : "http") . "://" . $_SERVER['HTTP_HOST'] . "/assets/php/download.php?dir=" . $output['info']['dirname'] . "&file=" . $output['info']['basename'];
     } else {
         $output['error'] = "Keine Ergebnisse";
     }
