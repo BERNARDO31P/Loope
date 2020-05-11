@@ -8,18 +8,6 @@ let body = $("body"),
     suggestions = $("#suggestions"),
     buttons = $("#buttons");
 
-// Implementierung einer Funktionseigenschaft
-Object.defineProperty(Array.prototype, 'chunk_inefficient', {
-    value: function (chunkSize) {
-        let array = this;
-        return [].concat.apply([],
-            array.map(function (elem, i) {
-                return i % chunkSize ? [] : [array.slice(i, i + chunkSize)];
-            })
-        );
-    }
-});
-
 // Diese Funktion ersetzt die URL mit den nötigen GET Parameter
 function insertParams(keys, values) {
     let params = "?" + keys[0] + "=" + values[0];
@@ -163,7 +151,7 @@ function sendSearch(page = 1) {
                         if (page === 1) {
                             let object = '<div id="imageview">';
 
-                            $.each(data['info']['pictures'].chunk_inefficient(20)[0], function (key, info) {
+                            $.each(data['info']['pictures'], function (key, info) {
                                 let url = "./assets/php/download.php?dir=" + info['dirname'] + "&file=" + info['basename'];
                                 object += "<a href='" + url + "'><img class='images' src='" + url + "' alt='" + info['filename'] + "'/></a>";
                             })
