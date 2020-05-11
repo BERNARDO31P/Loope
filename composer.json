@@ -1,6 +1,7 @@
 {
   "name": "bernardo31p/loope",
   "description": "This is a software to search and find files on your filesystem.",
+  "version": "v0.2.2",
   "minimum-stability": "stable",
   "license": "MIT",
   "authors": [
