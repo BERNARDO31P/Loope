@@ -201,23 +201,6 @@ function getSearch(query, page) {
     sendSearch(page);
 }
 
-/*// Funktion, welche Dateien im Hintergrund herunterlädt
-function download(href, filename) {
-    fetch(href)
-        .then(resp => resp.blob())
-        .then(blob => {
-            const url = window.URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.style.display = 'none';
-            a.href = url;
-            a.download = filename;
-            document.body.appendChild(a);
-            a.click();
-            window.URL.revokeObjectURL(url);
-        })
-        .catch(() => alert('Der Download konnte nicht gestartet werden. Bitte laden Sie die Seite neu.'));
-}*/
-
 // Überprüft ob die Eingabe mit den Vorschlägen übereinstimmt
 function checkExists(inputValue) {
     let x = document.getElementById("suggestions"), i, flag;
