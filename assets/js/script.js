@@ -127,7 +127,7 @@ function sendSearch(page = 1) {
                         $.each(data['info']['files'], function (key, info) {
                             let object = "<div class='result'>" +
                                 "<span class='dirname'>" + info['dirname'] + "</span><br/>" +
-                                "<a href='./assets/php/download.php?dir=" + info['dirname'] + "&file=" + info['basename'] + "' class='basename'>" + info['basename'] + "</a><br/>" +
+                                "<a target='_blank' href='./assets/php/download.php?dir=" + info['dirname'] + "&file=" + info['basename'] + "' class='basename'>" + info['basename'] + "</a><br/>" +
                                 "<span><span class='changed'>" + timeConverter(info['lastChange']) + "</span> - " + info['content'] + "</span>";
 
                             if (info['notFound']) {
@@ -147,10 +147,19 @@ function sendSearch(page = 1) {
                             $(object).appendTo("#main");
                         });
 
-                        // TODO: Bilder Vorschau erstellen
-                        $.each(data['info']['pictures'], function (key, info) {
+                        // Verarbeitung von eventuell Bilder
+                        if (page === 1) {
+                            let object = '<div id="imageview">';
 
-                        });
+                            $.each(data['info']['pictures'], function (key, info) {
+                                let url = "./assets/php/download.php?dir=" + info['dirname'] + "&file=" + info['basename'];
+                                object += "<a href='" + url + "'><img class='images' src='" + url + "' alt='" + info['filename'] + "'/></a>";
+                            })
+
+                            object += "</div>";
+                            console.log(object);
+                            $(object).prependTo("#main");
+                        }
 
                         // Verarbeitung der Navigation
                         if (data['pages'] > 1) {
@@ -193,7 +202,7 @@ function getSearch(query, page) {
     sendSearch(page);
 }
 
-// Funktion, welche Dateien im Hintergrund herunterlädt
+/*// Funktion, welche Dateien im Hintergrund herunterlädt
 function download(href, filename) {
     fetch(href)
         .then(resp => resp.blob())
@@ -208,7 +217,7 @@ function download(href, filename) {
             window.URL.revokeObjectURL(url);
         })
         .catch(() => alert('Der Download konnte nicht gestartet werden. Bitte laden Sie die Seite neu.'));
-}
+}*/
 
 // Überprüft ob die Eingabe mit den Vorschlägen übereinstimmt
 function checkExists(inputValue) {
@@ -228,12 +237,6 @@ body.on("click", ".mustcontain", function (e) {
     searchval = searchval.replace(word, '"' + word + '"')
     search.val(searchval);
     sendSearch();
-});
-
-// Sobald ein Ergebnis angedrückt wird, wird es heruntergeladen
-body.on("click", ".basename", function (e) {
-    e.preventDefault();
-    download(this.href, this.text);
 });
 
 // Verwaltung von den Vorschlägen und das Kreuz im Suchfeld
@@ -297,7 +300,7 @@ body.on("click", "#luckybutton", function (e) {
 
                 let data = jQuery.parseJSON(JSON.stringify(response));
                 if (!data['error']) {
-                    download(data['info']['url'], data['info']['filename']);
+                    //download(data['info']['url'], data['info']['filename']);
                 } else {
                     alert(data['error']);
                 }
