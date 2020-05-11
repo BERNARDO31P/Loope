@@ -29,6 +29,10 @@
     height: 100px;
 }
 
+#imageview > a {
+    margin: 0 5px;
+}
+
 #search {
     border-radius: 50px;
     padding: 5px 15px;
@@ -75,7 +79,6 @@
 
 .images {
     height: 100%;
-    margin: 0 5px;
 }
 
 .content {
