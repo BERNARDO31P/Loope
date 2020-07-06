@@ -148,7 +148,7 @@ function sendSearch(page = 1) {
                         });
 
                         // Verarbeitung von eventuell Bilder
-                        if (page === 1) {
+                        if (page === 1 && data['info']['pictures'].length > 0) {
                             let object = '<div id="imageview">';
 
                             $.each(data['info']['pictures'], function (key, info) {

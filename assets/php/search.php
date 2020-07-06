@@ -1,5 +1,7 @@
 <?php
 
+ini_set('memory_limit', '1024M');
+
 header('Content-Type: application/json');
 require_once __DIR__ . "/createpath.php";
 
@@ -142,7 +144,7 @@ function prepareData($array)
 
             // Falls eine Datei gar keine Relevanz hat, wird diese ignoriert
             if ($array['relevanz'] != 0) {
-                if (!in_array($array['extension'], $picformat)) {
+                if (!in_array($array['extension'] ?? "", $picformat)) {
                     $array['content'] = mb_convert_encoding(prepareContent(trim($words[0], '"-'), $array['content']), 'UTF-8');
                     array_push($results['files'], $array);
                 } else {
